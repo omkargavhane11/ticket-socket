@@ -24,7 +24,7 @@ const getUser = (userId) => {
 io.on("connection", (socket) => {
     console.log("query connected " + socket.id);
 
-    socket.on("addQuery", (userId, queryId) => {
+    socket.on("addQuery", (userId) => {
         addUser(userId, socket.id)
         io.emit("getUsers", users)
     })
