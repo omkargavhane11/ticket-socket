@@ -43,8 +43,8 @@ io.on("connection", (socket) => {
     }) => {
         let user = getUser(recieverId);
 
-        io.to(user?.socketId,).emit("getMessage", {
-            senderId, message, queryId,
+        io.to(user?.socketId).emit("getMessage", {
+            senderId, message, queryId
         })
     })
 
