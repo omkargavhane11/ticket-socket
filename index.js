@@ -7,8 +7,8 @@ const io = require("socket.io")(process.env.PORT, {
 
 let users = [];
 
-const addUser = (userId, queryId, socketId) => {
-    !users.some((user) => user.queryId === queryId) && users.push({ userId, queryId, socketId });
+const addUser = (userId, socketId) => {
+    !users.some((user) => user.userId === userId) && users.push({ userId, socketId });
 
 }
 
@@ -25,8 +25,8 @@ io.on("connection", (socket) => {
     console.log("query connected " + socket.id);
 
     socket.on("addQuery", (userId, queryId) => {
-        addUser(userId, queryId, socket.id)
-        io.emit("getQueries", users)
+        addUser(userId, socket.id)
+        io.emit("getUsers", users)
     })
 
     socket.on("disconnect", () => {
