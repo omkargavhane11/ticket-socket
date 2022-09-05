@@ -1,10 +1,12 @@
 const dotenv = require("dotenv");
-
 dotenv.config();
 
-const PORT = process.env.PORT;
 
-const io = require("socket.io")(PORT);
+const io = require("socket.io")(process.env.PORT, {
+    cors: {
+        origin: "https://myticket77.netlify.app"
+    }
+});
 
 let users = [];
 
@@ -52,5 +54,4 @@ io.on("connection", (socket) => {
 })
 
 
-// io.listen(PORT, () => console.log("Socket started..."));
 
