@@ -22,15 +22,15 @@ const getUser = (userId) => {
 }
 
 io.on("connection", (socket) => {
-    console.log("query connected " + socket.id);
+    console.log("user connected " + socket.id);
 
-    socket.on("addQuery", (userId) => {
+    socket.on("addUsers", (userId) => {
         addUser(userId, socket.id)
         io.emit("getUsers", users)
     })
 
     socket.on("disconnect", () => {
-        console.log("query disconnected " + socket.id);
+        console.log("user disconnected " + socket.id);
         removeUser(socket.id);
         io.emit("getUsers", users)
     })
