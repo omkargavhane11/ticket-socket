@@ -53,5 +53,5 @@ io.on("connection", (socket) => {
 })
 
 
-
+io.listen(PORT, () => console.log("Socket started..."));
 
