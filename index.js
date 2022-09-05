@@ -1,6 +1,9 @@
 const dotenv = require("dotenv");
+
 dotenv.config();
+
 const PORT = process.env.PORT;
+
 const io = require("socket.io")(PORT, {
     cors: {
         origin: process.env.CLIENT
@@ -53,5 +56,5 @@ io.on("connection", (socket) => {
 })
 
 
-io.listen(PORT, () => console.log("Socket started..."));
+// io.listen(PORT, () => console.log("Socket started..."));
 
